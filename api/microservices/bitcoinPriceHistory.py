@@ -11,6 +11,7 @@ def getBitcoinPriceHistory():
         response = requests.get(url)
     except requests.exceptions.RequestException as err:
         print('Something went wrong: ' + err)
+        sys.stdout.flush()
     else:
         if response.status_code == 200:
             pricesHistory = response.json()['bpi']
@@ -22,6 +23,7 @@ def getBitcoinPriceHistory():
             sys.stdout.flush()
         else:
             print(response.status_code)
+            sys.stdout.flush()
 
 
 getBitcoinPriceHistory()
