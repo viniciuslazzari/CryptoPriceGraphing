@@ -16,6 +16,7 @@ def getBitcoinPriceHistory():
             pricesHistory = response.json()['bpi']
             df = pd.DataFrame.from_dict(
                 pricesHistory, orient='index', columns=['Price'])
+            df['Price'] = round(df['Price'], 2)
             output = df.to_json()
             print(output)
             sys.stdout.flush()
