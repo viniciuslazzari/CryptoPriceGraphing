@@ -6,7 +6,7 @@ Simple tool to easily visualize cryptocurrency prices
 - [X] Microservice for Bitcoin prices
 - [X] Price history API 
 - [X] Add API parameters
-- [ ] API method to get all cryptos
+- [ ] Create crypto select element
 
 ## Author 🧙
 - [viniciuslazzari](https://github.com/viniciuslazzari)
