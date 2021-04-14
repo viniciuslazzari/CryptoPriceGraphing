@@ -32,7 +32,7 @@ class App extends React.Component<IProps, IState> {
   }
 
   getCryptoHistoric() {
-    var url = 'http://localhost:8080/api/v1/historicaldata?timePeriod=24h&coin=' + this.state.selectedCoin?.value
+    var url = 'http://localhost:8080/api/v1/historicaldata?timePeriod=1y&coin=' + this.state.selectedCoin?.value
     axios.get(url)
       .then(async res => {
         if (res.data) {
@@ -58,7 +58,6 @@ class App extends React.Component<IProps, IState> {
     return (
       <div className="App" >
         <CryptoSelect onSelectCrypto={this.handleCryptoChange.bind(this)} />
-        <p> Selected coin: {this.state.selectedCoin?.value} </p>
         <CryptoHistoricGraph historicData={this.state.coinPrices} />
       </div>
     );

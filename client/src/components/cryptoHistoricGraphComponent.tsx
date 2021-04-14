@@ -31,7 +31,8 @@ export default class CryptoHistoricGraph extends React.Component<IProps, IState>
 
 		historicData.forEach(element => {
 			yLabel.push(element.price)
-			xLabel.push(element.timestamp)
+			const date = new Date(Number(element.timestamp) * 1000);
+			xLabel.push(date.toLocaleDateString("pt-BR"))
 		});
 
 		this.setState({
@@ -54,15 +55,37 @@ export default class CryptoHistoricGraph extends React.Component<IProps, IState>
 					label: 'Price',
 					data: this.state.yLabel,
 					fill: false,
-					backgroundColor: 'rgb(255, 99, 132)',
-					borderColor: 'rgba(255, 99, 132, 0.2)',
+					borderColor: 'rgba(102, 126, 234)',
+					pointRadius: 0,
 				},
 			],
 		}
 
+		const options = {
+			scales: {
+				xAxes: [{
+					gridLines: {
+						color: "rgba(0, 0, 0, 0)",
+					},
+					ticks: {
+						maxTicksLimit: 10
+					}
+				}]
+			},
+			legend: {
+				display: false
+			},
+			tooltip: {
+				intersect: false,
+				position: 'nearest'
+			}
+		}
+
+
 		return <div>
 			<Line
 				data={data}
+				options={options}
 			/>
 		</div >;
 	}
