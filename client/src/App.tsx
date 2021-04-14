@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import CryptoSelect from './components/cryptoSelectComponent'
+import TimePeriodSelect from './components/timePeriodSelectComponent'
 import CryptoHistoricGraph from './components/cryptoHistoricGraphComponent'
 
 interface IProps {
@@ -8,6 +9,7 @@ interface IProps {
 
 interface IState {
   selectedCoin?: selectOption;
+  selectedTimePeriod?: selectOption;
   coinPrices: priceObject[]
 }
 
@@ -27,12 +29,13 @@ class App extends React.Component<IProps, IState> {
 
     this.state = {
       selectedCoin: undefined,
+      selectedTimePeriod: undefined,
       coinPrices: []
     }
   }
 
   getCryptoHistoric() {
-    var url = 'http://localhost:8080/api/v1/historicaldata?timePeriod=1y&coin=' + this.state.selectedCoin?.value
+    var url = 'http://localhost:8080/api/v1/historicaldata?timePeriod=' + this.state.selectedTimePeriod?.value + '&coin=' + this.state.selectedCoin?.value
     axios.get(url)
       .then(async res => {
         if (res.data) {
@@ -48,6 +51,12 @@ class App extends React.Component<IProps, IState> {
       })
   }
 
+  handleTimePeriodChange = (timePeriodSelected: selectOption) => {
+    this.setState({ selectedTimePeriod: timePeriodSelected }, () => {
+      this.getCryptoHistoric()
+    })
+  }
+
   handleCryptoChange = (cryptoSelected: selectOption) => {
     this.setState({ selectedCoin: cryptoSelected }, () => {
       this.getCryptoHistoric()
@@ -58,6 +67,7 @@ class App extends React.Component<IProps, IState> {
     return (
       <div className="App" >
         <CryptoSelect onSelectCrypto={this.handleCryptoChange.bind(this)} />
+        <TimePeriodSelect onSelectTimePeriod={this.handleTimePeriodChange.bind(this)} />
         <CryptoHistoricGraph historicData={this.state.coinPrices} />
       </div>
     );
