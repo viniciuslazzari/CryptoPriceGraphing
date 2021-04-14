@@ -4,7 +4,7 @@ module.exports = () => {
 	const controller = {};
 
 	controller.getHistoricalData = (req, res) => {
-		var process = spawn('python', ['./microservices/bitcoinPriceHistory.py',
+		var process = spawn('python', ['./microservices/cryptoPriceHistory.py',
 			req.query.coin,
 			req.query.timePeriod]);
 
