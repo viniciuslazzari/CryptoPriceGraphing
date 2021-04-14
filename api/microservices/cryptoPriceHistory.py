@@ -13,7 +13,7 @@ def jsonToDataframe(json):
     df = pd.DataFrame(columns=['price'])
 
     for argument in json:
-        df.loc[argument['timestamp']] = round(float(argument['price']), 2)
+        df.loc[argument['timestamp']] = float(argument['price'])
 
     return df
 
