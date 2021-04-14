@@ -1,26 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import CryptoSelect from './components/cryptoSelectComponent'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface IProps {
+}
+
+interface IState {
+  selectedCoin?: selectOption;
+}
+
+interface selectOption {
+  label: string;
+  value: string;
+}
+
+class App extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
+    super(props);
+
+    this.state = {
+      selectedCoin: undefined
+    }
+  }
+
+  handleCryptoChange = (cryptoSelected: selectOption) => {
+    this.setState({ selectedCoin: cryptoSelected })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <CryptoSelect onSelectCrypto={this.handleCryptoChange.bind(this)} />
+        <p> Selected coin: {this.state.selectedCoin?.label} </p>
+      </div>
+    );
+  }
 }
 
 export default App;
