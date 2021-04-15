@@ -8,8 +8,9 @@ Simple tool to easily visualize cryptocurrency prices
 - [X] Add API parameters
 - [X] Create crypto select element
 - [X] Plot crypto historic graph
-- [ ] Fix timestamp graph dates
-- [ ] Beautify graph
+- [X] Fix timestamp graph dates
+- [X] Beautify graph
+- [ ] Set default values
 
 ## Author 🧙
 - [viniciuslazzari](https://github.com/viniciuslazzari)
