@@ -1,0 +1,32 @@
+html, body, #root {
+	background-color: rgb(243, 244, 246);
+    margin: 0;
+    height: 100%;
+	display: grid;
+}
+
+.main {
+	overflow: hidden;
+	box-shadow: rgba(100, 100, 111, 0.2) 5px 5px 10px 0px;
+    border-radius: 7px;
+	display: flex;
+	margin: auto;
+	width: 90%;
+}
+
+.left {
+	display: grid;
+	flex: 20%;
+	background-color:white;
+}
+
+.left-content {
+	width: 90%;
+	height: 95%;
+	margin: auto;
+}
+
+.graphic {
+	flex: 80%;
+	background-color: rgba(99, 102, 241);
+}

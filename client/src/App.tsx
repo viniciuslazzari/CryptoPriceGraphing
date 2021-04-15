@@ -3,6 +3,7 @@ import axios from 'axios';
 import CryptoSelect from './components/cryptoSelectComponent'
 import TimePeriodSelect from './components/timePeriodSelectComponent'
 import CryptoHistoricGraph from './components/cryptoHistoricGraphComponent'
+import './app.css';
 
 interface IProps {
 }
@@ -65,10 +66,16 @@ class App extends React.Component<IProps, IState> {
 
   render() {
     return (
-      <div className="App" >
-        <CryptoSelect onSelectCrypto={this.handleCryptoChange.bind(this)} />
-        <TimePeriodSelect onSelectTimePeriod={this.handleTimePeriodChange.bind(this)} />
-        <CryptoHistoricGraph historicData={this.state.coinPrices} />
+      <div className='main'>
+        <div className='left'>
+          <div className='left-content'>
+            <label htmlFor="">Select crypto</label>
+            <CryptoSelect className='cyptoSelect select' onSelectCrypto={this.handleCryptoChange.bind(this)} />
+            <label htmlFor="">Select time period</label>
+            <TimePeriodSelect className='timePeriodSelect select' onSelectTimePeriod={this.handleTimePeriodChange.bind(this)} />
+          </div>
+        </div>
+        <CryptoHistoricGraph className='graphic' historicData={this.state.coinPrices} />
       </div>
     );
   }

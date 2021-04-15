@@ -11,6 +11,7 @@ interface Coin {
 
 interface IProps {
 	onSelectCrypto: Function;
+	className: string;
 }
 
 interface IState {
@@ -61,7 +62,7 @@ export default class CryptoSelect extends React.Component<IProps, IState> {
 			}
 		})
 
-		return <div>
+		return <div className={this.props.className}>
 			<Select
 				options={options}
 				onChange={this.handleCryptoChange.bind(this)}

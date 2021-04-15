@@ -3,6 +3,7 @@ import { Line } from 'react-chartjs-2';
 
 interface IProps {
 	historicData: priceObject[];
+	className: string;
 }
 
 interface IState {
@@ -32,7 +33,8 @@ export default class CryptoHistoricGraph extends React.Component<IProps, IState>
 		historicData.forEach(element => {
 			yLabel.push(element.price)
 			const date = new Date(Number(element.timestamp) * 1000);
-			xLabel.push(date.toLocaleDateString("pt-BR"))
+			console.log(date)
+			xLabel.push(date.toString())
 		});
 
 		this.setState({
@@ -54,21 +56,47 @@ export default class CryptoHistoricGraph extends React.Component<IProps, IState>
 				{
 					label: 'Price',
 					data: this.state.yLabel,
-					fill: false,
-					borderColor: 'rgba(102, 126, 234)',
+					fill: true,
+					borderColor: 'rgba(255, 255, 255)',
+					backgroundColor: "rgba(255, 255, 255, 0.1)",
 					pointRadius: 0,
 				},
 			],
 		}
 
 		const options = {
+			layout: {
+				padding: {
+					top: 25,
+					bottom: 25,
+					left: 25,
+					right: 40
+				}
+			},
 			scales: {
 				xAxes: [{
+					type: 'time',
 					gridLines: {
-						color: "rgba(0, 0, 0, 0)",
+						zeroLineBorderDash: [5, 5],
+						zeroLineColor: 'rgba(255, 255, 255, 0.5)',
+						borderDash: [5, 5],
+						color: "rgba(255, 255, 255, 0.5)",
 					},
 					ticks: {
-						maxTicksLimit: 10
+						maxRotation: 0,
+						minRotation: 0,
+						autoSkipPadding: 75,
+						fontColor: "rgba(255, 255, 255)",
+						maxTicksLimit: 8
+					}
+				}],
+				yAxes: [{
+					gridLines: {
+						zeroLineColor: "rgba(255, 255, 255)",
+						display: false,
+					},
+					ticks: {
+						fontColor: "rgba(255, 255, 255)",
 					}
 				}]
 			},
@@ -82,7 +110,7 @@ export default class CryptoHistoricGraph extends React.Component<IProps, IState>
 		}
 
 
-		return <div>
+		return <div className={this.props.className}>
 			<Line
 				data={data}
 				options={options}

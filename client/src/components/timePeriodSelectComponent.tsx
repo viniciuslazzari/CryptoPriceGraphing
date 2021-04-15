@@ -11,6 +11,7 @@ interface SelectOption {
 
 interface IProps {
 	onSelectTimePeriod: Function;
+	className: string;
 }
 
 interface IState {
@@ -65,7 +66,7 @@ export default class TimePeriodSelect extends React.Component<IProps, IState> {
 	}
 
 	render() {
-		return <div>
+		return <div className={this.props.className}>
 			<Select
 				options={this.state.selectOptions}
 				onChange={this.handleTimePeriodChange.bind(this)}
