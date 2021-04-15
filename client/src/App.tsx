@@ -29,8 +29,8 @@ class App extends React.Component<IProps, IState> {
     super(props);
 
     this.state = {
-      selectedCoin: undefined,
-      selectedTimePeriod: undefined,
+      selectedCoin: { label: 'Bitcoin', value: 'Qwsogvtv82FCd' },
+      selectedTimePeriod: { label: '1y', value: '1y' },
       coinPrices: []
     }
   }
@@ -50,6 +50,10 @@ class App extends React.Component<IProps, IState> {
           this.setState({ coinPrices: coinPrices })
         }
       })
+  }
+
+  componentDidMount() {
+    this.getCryptoHistoric();
   }
 
   handleTimePeriodChange = (timePeriodSelected: selectOption) => {

@@ -70,6 +70,7 @@ export default class TimePeriodSelect extends React.Component<IProps, IState> {
 			<Select
 				options={this.state.selectOptions}
 				onChange={this.handleTimePeriodChange.bind(this)}
+				defaultValue={{ label: "1y", value: '1y' }}
 			/>
 		</div>;
 	}

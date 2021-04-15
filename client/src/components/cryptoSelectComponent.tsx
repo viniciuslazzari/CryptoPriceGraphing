@@ -15,7 +15,7 @@ interface IProps {
 }
 
 interface IState {
-	data: Coin[];
+	selectOptions: Coin[];
 }
 
 
@@ -24,7 +24,7 @@ export default class CryptoSelect extends React.Component<IProps, IState> {
 		super(props);
 
 		this.state = {
-			data: []
+			selectOptions: []
 		}
 	}
 
@@ -42,9 +42,9 @@ export default class CryptoSelect extends React.Component<IProps, IState> {
 							name: coin.name,
 							uuid: coin.uuid
 						}
-						let data = this.state.data;
-						data.push(coinObject)
-						this.setState({ data: data })
+						let selectOptions = this.state.selectOptions;
+						selectOptions.push(coinObject)
+						this.setState({ selectOptions: selectOptions })
 					})
 				}
 			})
@@ -55,10 +55,10 @@ export default class CryptoSelect extends React.Component<IProps, IState> {
 	}
 
 	render() {
-		const options = this.state.data.map((coin) => {
+		const options = this.state.selectOptions.map((option) => {
 			return {
-				label: coin.name,
-				value: coin.uuid,
+				label: option.name,
+				value: option.uuid,
 			}
 		})
 
@@ -66,6 +66,7 @@ export default class CryptoSelect extends React.Component<IProps, IState> {
 			<Select
 				options={options}
 				onChange={this.handleCryptoChange.bind(this)}
+				defaultValue={{ label: "Bitcoin", value: 'Qwsogvtv82FCd' }}
 			/>
 		</div>;
 	}
