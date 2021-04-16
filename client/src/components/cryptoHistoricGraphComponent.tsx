@@ -33,7 +33,6 @@ export default class CryptoHistoricGraph extends React.Component<IProps, IState>
 		historicData.forEach(element => {
 			yLabel.push(element.price)
 			const date = new Date(Number(element.timestamp) * 1000);
-			console.log(date)
 			xLabel.push(date.toString())
 		});
 
