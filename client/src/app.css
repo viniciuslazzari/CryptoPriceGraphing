@@ -1,4 +1,12 @@
+@font-face {
+	font-family: 'Acumin pro';
+	src: local('Acumin pro'), url(./fonts/Acumin-BdPro.otf) format('truetype');
+	font-family: 'Acumin pro light';
+	src: local('Acumin pro light'), url(./fonts/Acumin-RPro.otf) format('truetype');
+}
+
 html, body, #root {
+	font-family: 'Acumin pro light', sans-serif;
 	background-color: rgb(243, 244, 246);
     margin: 0;
     height: 100%;
@@ -6,15 +14,16 @@ html, body, #root {
 }
 
 .main {
-	overflow: hidden;
-	box-shadow: rgba(100, 100, 111, 0.2) 5px 5px 10px 0px;
-    border-radius: 7px;
 	display: flex;
 	margin: auto;
 	width: 90%;
+	height: 90%;
 }
 
 .left {
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+	border-radius: 7px;
+	overflow: hidden;
 	display: grid;
 	flex: 20%;
 	background-color:white;
@@ -22,11 +31,55 @@ html, body, #root {
 
 .left-content {
 	width: 90%;
-	height: 95%;
+	height: 90%;
 	margin: auto;
 }
 
-.graphic {
+.timePeriodSelect{
+	margin-top: 5%;
+}
+
+.topbar-item {
+	width: 20%;
+	display: grid;
+}
+
+.topbar-item-content {
+	width: 90%;
+	height: 80%;
+	margin: auto;
+}
+
+.topbar-item-content-icon {
+	display: grid;
+}
+
+.coinIcon {
+	margin: auto;
+	height: 50px;
+}
+
+.right {
+	margin-left: 1%;
 	flex: 80%;
+}
+
+.topbar {
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+	overflow: hidden;
+    border-radius: 7px;
+	background-color:white;
+	height: 15%;
+	width: 100%;
+	display: flex;
+}
+
+.graphic {
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+	overflow: hidden;
+    border-radius: 7px;
+	margin-top: 1%;
+	height: 83%;
+	width: 100%;
 	background-color: rgba(99, 102, 241);
 }
