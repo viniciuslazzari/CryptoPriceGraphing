@@ -3,6 +3,7 @@ import axios from 'axios';
 import CryptoSelect from './components/cryptoSelectComponent'
 import TimePeriodSelect from './components/timePeriodSelectComponent'
 import CryptoHistoricGraph from './components/cryptoHistoricGraphComponent'
+import TopBar from './components/topBarComponent'
 import './app.css';
 
 interface IProps {
@@ -11,7 +12,8 @@ interface IProps {
 interface IState {
   selectedCoin?: selectOption;
   selectedTimePeriod?: selectOption;
-  coinPrices: priceObject[]
+  coinPrices: priceObject[];
+  coinInfo: any;
 }
 
 interface selectOption {
@@ -31,7 +33,8 @@ class App extends React.Component<IProps, IState> {
     this.state = {
       selectedCoin: { label: 'Bitcoin', value: 'Qwsogvtv82FCd' },
       selectedTimePeriod: { label: '1y', value: '1y' },
-      coinPrices: []
+      coinPrices: [],
+      coinInfo: null,
     }
   }
 
@@ -52,8 +55,19 @@ class App extends React.Component<IProps, IState> {
       })
   }
 
+  getCryptoInfo(coinUuid: string | undefined) {
+    var url = '/v2/coin/' + coinUuid
+    axios.get(url)
+      .then(async res => {
+        if (res.data) {
+          this.setState({ coinInfo: res.data })
+        }
+      })
+  }
+
   componentDidMount() {
     this.getCryptoHistoric();
+    this.getCryptoInfo(this.state.selectedCoin?.value)
   }
 
   handleTimePeriodChange = (timePeriodSelected: selectOption) => {
@@ -65,21 +79,31 @@ class App extends React.Component<IProps, IState> {
   handleCryptoChange = (cryptoSelected: selectOption) => {
     this.setState({ selectedCoin: cryptoSelected }, () => {
       this.getCryptoHistoric()
+      this.getCryptoInfo(this.state.selectedCoin?.value)
     })
   }
 
   render() {
     return (
       <div className='main'>
+
+
         <div className='left'>
           <div className='left-content'>
-            <label htmlFor="">Select crypto</label>
+            <p>CryptoPriceGraphing</p>
+            <label htmlFor="">Cryptocurrency </label>
             <CryptoSelect className='cyptoSelect select' onSelectCrypto={this.handleCryptoChange.bind(this)} />
-            <label htmlFor="">Select time period</label>
-            <TimePeriodSelect className='timePeriodSelect select' onSelectTimePeriod={this.handleTimePeriodChange.bind(this)} />
+            <div className='timePeriodSelect'>
+              <label>Time period</label>
+              <TimePeriodSelect className='select' onSelectTimePeriod={this.handleTimePeriodChange.bind(this)} />
+            </div>
           </div>
+
         </div>
-        <CryptoHistoricGraph className='graphic' historicData={this.state.coinPrices} />
+        <div className='right'>
+          <TopBar coinInfo={this.state.coinInfo} />
+          <CryptoHistoricGraph className='graphic' historicData={this.state.coinPrices} />
+        </div>
       </div>
     );
   }
