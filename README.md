@@ -15,9 +15,9 @@ Simple tool to easily visualize cryptocurrency prices
 - [X] Beautify graph
 - [x] Set default values
 - [X] Add top bar infos
-- [ ] Fix top bar infos rounding
+- [X] Fix top bar infos rounding
+- [X] Stylize UI
 - [ ] Fix graph '7d' X axe labels
-- [ ] stylize UI
 
 ## Author 🧙
 - [viniciuslazzari](https://github.com/viniciuslazzari)
