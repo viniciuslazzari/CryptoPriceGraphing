@@ -98,6 +98,7 @@ class App extends React.Component<IProps, IState> {
               <label className='label-select'>📆 Time period</label>
               <TimePeriodSelect className='select' onSelectTimePeriod={this.handleTimePeriodChange.bind(this)} />
             </div>
+            <div className='div-dedicated'> <p className='dedicated'>Made with 💖 by <a href="https://github.com/viniciuslazzari">viniciuslazzari</a> </p> </div>
           </div>
 
         </div>

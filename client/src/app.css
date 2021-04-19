@@ -33,6 +33,7 @@ html, body, #root {
 	width: 90%;
 	height: 90%;
 	margin: auto;
+	position: relative;
 }
 
 .timePeriodSelect{
@@ -77,7 +78,6 @@ html, body, #root {
 .topbar-subtitle {
 	font-size: 13px;
 	letter-spacing: 1px;
-	font-weight: 400;
 	line-height: 0,75
 }
 
@@ -85,6 +85,20 @@ html, body, #root {
 	font-size: 22px;
 	font-weight: 700;
 	line-height: 0.5;
+}
+
+.div-dedicated {
+	bottom: 0;
+	position: absolute;
+}
+
+.dedicated {
+	font-size: 14px;
+	margin-bottom: 0;
+}
+
+.dedicated > a {
+	text-decoration: none;
 }
 
 .topbar-pricechange {
