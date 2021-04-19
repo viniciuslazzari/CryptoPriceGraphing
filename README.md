@@ -3,7 +3,7 @@
 Simple tool to easily visualize cryptocurrency prices
 
 ## Visuals 🔍
-![alt text](https://github.com/viniciuslazzari/CryptoPriceGraphing/blob/main/examples/example.jpeg?raw=true)
+![alt text](https://github.com/viniciuslazzari/CryptoPriceGraphing/blob/main/visuals/example.jpeg?raw=true)
 
 ## Features 📋
 - [X] Microservice for Bitcoin prices
