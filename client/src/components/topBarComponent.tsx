@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 
 require('dotenv').config()
 
@@ -32,7 +31,7 @@ export default class TopBar extends React.Component<IProps, IState> {
 		}
 	}
 
-	componentDidUpdate(prevProps: any, prevState: any) {
+	componentDidUpdate(prevProps: any) {
 		if (prevProps.coinInfo !== this.props.coinInfo) {
 			const info = this.props.coinInfo.data.coin
 			const coinInfo: coinInfo = {

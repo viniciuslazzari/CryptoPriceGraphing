@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import Select from 'react-select'
 
 require('dotenv').config()

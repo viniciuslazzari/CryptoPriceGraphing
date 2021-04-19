@@ -5,12 +5,12 @@ require('dotenv').config()
 port = process.env.PORT;
 
 const app = express();
-app.set('port', port);
+app.set('port', port || 8080);
 app.use(express.json());
 app.use(cors());
 
 require('./routes/historicalDataRoutes')(app);
 
 app.listen(port, () => {
-	console.log(`Servidor rodando na porta ${port}`)
+	console.log(`Server running on port: ${port}`)
 });
