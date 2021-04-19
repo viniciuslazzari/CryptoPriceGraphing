@@ -26,35 +26,35 @@ export default class TimePeriodSelect extends React.Component<IProps, IState> {
 		this.state = {
 			selectOptions: [
 				{
-					label: '3h',
+					label: '3 hours',
 					value: '3h'
 				},
 				{
-					label: '24h',
+					label: '24 hours',
 					value: '24h'
 				},
 				{
-					label: '7d',
+					label: '7 days',
 					value: '7d'
 				},
 				{
-					label: '30d',
+					label: '30 days',
 					value: '30d'
 				},
 				{
-					label: '3m',
+					label: '3 months',
 					value: '3m'
 				},
 				{
-					label: '1y',
+					label: '1 year',
 					value: '1y'
 				},
 				{
-					label: '3y',
+					label: '3 years',
 					value: '3y'
 				},
 				{
-					label: '5y',
+					label: '5 years',
 					value: '5y'
 				},
 			]
@@ -70,7 +70,7 @@ export default class TimePeriodSelect extends React.Component<IProps, IState> {
 			<Select
 				options={this.state.selectOptions}
 				onChange={this.handleTimePeriodChange.bind(this)}
-				defaultValue={{ label: "1y", value: '1y' }}
+				defaultValue={{ label: "1 year", value: '1y' }}
 			/>
 		</div>;
 	}

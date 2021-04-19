@@ -43,6 +43,7 @@ class App extends React.Component<IProps, IState> {
     axios.get(url)
       .then(async res => {
         if (res.data) {
+          console.log(res.data)
           const coinPrices = await Object.entries(res.data.price).map(([key, value]) => {
             const priceObject: priceObject = {
               timestamp: key,
@@ -90,11 +91,11 @@ class App extends React.Component<IProps, IState> {
 
         <div className='left'>
           <div className='left-content'>
-            <p>CryptoPriceGraphing</p>
-            <label htmlFor="">Cryptocurrency </label>
+            <h1 className='main-title'>CryptoPriceGraphing</h1>
+            <label className='label-select'>💵 Cryptocurrency</label>
             <CryptoSelect className='cyptoSelect select' onSelectCrypto={this.handleCryptoChange.bind(this)} />
             <div className='timePeriodSelect'>
-              <label>Time period</label>
+              <label className='label-select'>📆 Time period</label>
               <TimePeriodSelect className='select' onSelectTimePeriod={this.handleTimePeriodChange.bind(this)} />
             </div>
           </div>

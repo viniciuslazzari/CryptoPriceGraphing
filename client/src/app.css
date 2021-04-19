@@ -6,7 +6,7 @@
 }
 
 html, body, #root {
-	font-family: 'Acumin pro light', sans-serif;
+	font-family: 'Acumin pro', sans-serif;
 	background-color: rgb(243, 244, 246);
     margin: 0;
     height: 100%;
@@ -39,8 +39,28 @@ html, body, #root {
 	margin-top: 5%;
 }
 
+.main-title {
+	font-size: 22px;
+	margin-top: 0px;
+	margin-bottom: 25px;
+}
+
+.select {
+	margin-top: 5px;
+}
+
 .topbar-item {
 	width: 20%;
+	display: grid;
+}
+
+.topbar-item-icon {
+	width: 13%;
+	display: grid;
+}
+
+.topbar-item-main {
+	width: 27%;
 	display: grid;
 }
 
@@ -52,6 +72,33 @@ html, body, #root {
 
 .topbar-item-content-icon {
 	display: grid;
+}
+
+.topbar-subtitle {
+	font-size: 13px;
+	letter-spacing: 1px;
+	font-weight: 400;
+	line-height: 0,75
+}
+
+.topbar-subtitle-content {
+	font-size: 22px;
+	font-weight: 700;
+	line-height: 0.5;
+}
+
+.topbar-pricechange {
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 0.5;
+}
+
+.topbar-subtitle-content-positive{
+	color: #11b97f;
+}
+
+.topbar-subtitle-content-negative{
+	color: rgb(255, 66, 66);
 }
 
 .coinIcon {

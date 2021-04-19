@@ -11,6 +11,7 @@ interface coinInfo {
 	mktCap: string;
 	volume: string;
 	change: number;
+	positiveChange: boolean;
 }
 
 interface IProps {
@@ -27,7 +28,7 @@ export default class TopBar extends React.Component<IProps, IState> {
 		super(props);
 
 		this.state = {
-			coinInfo: { icon: '', name: '', ticker: '', price: 0, mktCap: '', volume: '', change: 0 }
+			coinInfo: { icon: '', name: '', ticker: '', price: 0, mktCap: '', volume: '', change: 0, positiveChange: false }
 		}
 	}
 
@@ -41,7 +42,8 @@ export default class TopBar extends React.Component<IProps, IState> {
 				price: Math.round(info.price * 100) / 100,
 				mktCap: this.roundNumber(info.marketCap),
 				volume: this.roundNumber(info['24hVolume']),
-				change: Math.round(info.change * 100) / 100
+				change: Math.round(info.change * 100) / 100,
+				positiveChange: (Math.round(info.change * 100) / 100) > 0
 			}
 			console.log(coinInfo)
 			this.setState({ coinInfo: coinInfo })
@@ -64,21 +66,25 @@ export default class TopBar extends React.Component<IProps, IState> {
 
 	render() {
 		return <div className='topbar'>
-			<div className='topbar-item'>
+			<div className='topbar-item-icon'>
 				<div className='topbar-item-content topbar-item-content-icon'>
 					<img className='coinIcon' src={this.state.coinInfo.icon} />
 				</div>
 			</div>
-			<div className='topbar-item'>
+			<div className='topbar-item-main'>
 				<div className='topbar-item-content'>
-					<p className='topbar-subtitle-content'>{this.state.coinInfo.name}</p>
-					<p className='topbar-subtitle'>{this.state.coinInfo.ticker}</p>
+					<p className='topbar-subtitle-content'>{this.state.coinInfo.name} ({this.state.coinInfo.ticker})</p>
+					{this.state.coinInfo.positiveChange ? (
+						<p className='topbar-pricechange topbar-subtitle-content-positive'>▲ {this.state.coinInfo.change}%</p>
+					) : (
+						<p className='topbar-pricechange topbar-subtitle-content-negative'>▼ {this.state.coinInfo.change}%</p>
+					)}
 				</div>
 			</div>
 			<div className='topbar-item'>
 				<div className='topbar-item-content'>
-					<p className='topbar-subtitle'>${this.state.coinInfo.price}</p>
-					<p className='topbar-subtitle-content'>{this.state.coinInfo.change}%</p>
+					<p className='topbar-subtitle'>PRICE</p>
+					<p className='topbar-subtitle-content'>${this.state.coinInfo.price}</p>
 				</div>
 			</div>
 			<div className='topbar-item'>
